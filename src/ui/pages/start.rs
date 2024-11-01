@@ -30,21 +30,6 @@ impl IMenu for StartBattleMenu {
 }
 
 impl StartBattleMenu {
-    // pub fn new(screen: &Screen) -> Self {
-    //     let players = screen.api_client.get_players();
-    //     let mut choices = vec![];
-    //     for player in players {
-    //         choices.push(MenuChoice {
-    //             action: Action::StartBattle(Some(player.player_id)),
-    //             title: player.username,
-    //         })
-    //     }
-    //     choices.push(MenuChoice {
-    //         action: Action::StartBattle(None),
-    //         title: "Waiting".to_string(),
-    //     });
-    //     Self {}
-    // }
 
     fn start_battle(api_client: &APIClient, opponent_id: Option<PlayerId>) {
         let battle_started = api_client.start_battle(opponent_id);

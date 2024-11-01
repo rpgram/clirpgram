@@ -18,7 +18,6 @@ pub struct Screen<'a> {
 
 impl Screen<'_> {
     pub fn new(player_id: PlayerId) -> Self {
-        // let mut menu = Menu::factory(Some(0));
         let client = APIClient {
             backend: "http://localhost:8000/battle",
             player_id,

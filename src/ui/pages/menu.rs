@@ -35,10 +35,7 @@ pub trait IMenu: DynClone {
     fn choose(&self, screen: &mut Screen);
 
     fn self_type(&self) -> MenuTag;
-    // fn down(&mut self);
-    // fn up(&mut self);
 
-    // fn render_menu(&self) -> Box<&mut MenuWidget>;
 }
 
 impl Clone for Box<dyn IMenu> {
@@ -50,9 +47,9 @@ impl Clone for Box<dyn IMenu> {
         }
     }
 
-    fn clone_from(&mut self, source: &Self) {
-        todo!()
-    }
+    // fn clone_from(&mut self, source: &Self) {
+    //     todo!()
+    // }
 }
 
 // pub enum Menus {
