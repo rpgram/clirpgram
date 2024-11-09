@@ -1,2 +1,2 @@
-pub mod start_battle;
 mod configuration;
+pub mod start_battle;

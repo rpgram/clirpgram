@@ -8,13 +8,18 @@ struct Config {
 }
 
 fn read_config(file_path: String) -> Config {
-    let mut opened = File::open(file_path.clone()).expect(format!("{} doesnt exists", file_path).as_str());
+    let mut opened =
+        File::open(file_path.clone()).expect(format!("{} doesnt exists", file_path).as_str());
     let mut config_buffer = [0u8; 4096];
     let got = opened.read(&mut config_buffer).unwrap();
-    let toml = String::from_utf8(config_buffer[..got].to_vec()).unwrap().as_str().parse::<Table>().expect("Invalid config format.");
+    let toml = String::from_utf8(config_buffer[..got].to_vec())
+        .unwrap()
+        .as_str()
+        .parse::<Table>()
+        .expect("Invalid config format.");
     Config {
         world_url: toml["world_url"].as_str().unwrap().to_string(),
-        battlefield_url: toml["battlefield_url"].as_str().unwrap().to_string()
+        battlefield_url: toml["battlefield_url"].as_str().unwrap().to_string(),
     }
 }
 
