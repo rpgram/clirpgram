@@ -42,3 +42,21 @@ pub struct JSONPacket {
     pub trim_end: u32,
     pub data: Vec<u8>,
 }
+
+#[derive(Deserialize)]
+struct GoodDTO {
+    price: Vec<String>,
+    quantity: u8,
+    name: String,
+}
+
+type HeroClass = u8;
+
+#[derive(Deserialize)]
+pub struct PlayerSetupDTO {
+    pub balance: String,
+    pub inventory: Vec<GoodDTO>,
+    pub heroes: Vec<HeroClass>,
+    pub username: String,
+    pub player_id: PlayerId,
+}

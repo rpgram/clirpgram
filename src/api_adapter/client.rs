@@ -1,32 +1,15 @@
 use crate::api_adapter::models::{
     BattleResult, BattleStarted, JSONPacket, PlayerDTO, WaitingBattle,
 };
+use crate::api_adapter::utils::parse_response;
 use crate::domain::types::{BattleId, PlayerId};
 use crate::ui::battlefield::BattleField;
-use reqwest::blocking::{Client, Response};
+use reqwest::blocking::{Client};
 
 pub struct APIClient<'a> {
     pub backend: &'a str,
     pub player_id: PlayerId,
     pub client: Client,
-}
-
-fn parse_response<G: for<'a> serde::Deserialize<'a>>(
-    response: reqwest::Result<Response>,
-) -> Option<G> {
-    match response {
-        Ok(bf_response) => {
-            if bf_response.status().as_u16() == 200 {
-                bf_response.json().unwrap()
-            } else {
-                None
-            }
-        }
-        Err(e) => {
-            eprintln!("{}", e);
-            None
-        }
-    }
 }
 
 impl<'a> APIClient<'_> {
