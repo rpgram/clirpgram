@@ -50,7 +50,7 @@ struct GoodDTO {
     name: String,
 }
 
-type HeroClass = u8;
+pub type HeroClass = u8;
 
 #[derive(Deserialize)]
 pub struct PlayerSetupDTO {
