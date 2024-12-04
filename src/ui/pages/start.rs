@@ -30,7 +30,6 @@ impl IMenu for StartBattleMenu {
 }
 
 impl StartBattleMenu {
-
     fn start_battle(api_client: &APIClient, opponent_id: Option<PlayerId>) {
         let battle_started = api_client.start_battle(opponent_id);
         match battle_started {

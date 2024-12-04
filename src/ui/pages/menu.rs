@@ -1,15 +1,15 @@
-use dyn_clone::DynClone;
 use crate::domain::types::{BattleId, PlayerId};
+use crate::ui::pages::connect::ConnectMenu;
+use crate::ui::pages::main::Menu;
+use crate::ui::pages::start::StartBattleMenu;
 use crate::ui::screen::Screen;
+use dyn_clone::DynClone;
 use ratatui::buffer::Buffer;
 use ratatui::layout::Rect;
 use ratatui::style::Stylize;
 use ratatui::text::Line;
 use ratatui::widgets;
 use ratatui::widgets::{HighlightSpacing, List, ListItem, ListState, Widget};
-use crate::ui::pages::connect::ConnectMenu;
-use crate::ui::pages::main::Menu;
-use crate::ui::pages::start::StartBattleMenu;
 
 #[derive(Clone)]
 pub enum Action {
@@ -35,15 +35,14 @@ pub trait IMenu: DynClone {
     fn choose(&self, screen: &mut Screen);
 
     fn self_type(&self) -> MenuTag;
-
 }
 
 impl Clone for Box<dyn IMenu> {
     fn clone(&self) -> Self {
         match self.self_type() {
-            MenuTag::MainMenu => {Box::new(Menu {})}
-            MenuTag::ConnectMenu => {Box::new(ConnectMenu {})}
-            MenuTag::StartMenu => {Box::new(StartBattleMenu {})}
+            MenuTag::MainMenu => Box::new(Menu {}),
+            MenuTag::ConnectMenu => Box::new(ConnectMenu {}),
+            MenuTag::StartMenu => Box::new(StartBattleMenu {}),
         }
     }
 

@@ -1,7 +1,7 @@
 use crate::ui::screen::Screen;
 use color_eyre::Result;
+use std::env;
 use std::time::Duration;
-use std::{env};
 
 mod api_adapter;
 mod application;

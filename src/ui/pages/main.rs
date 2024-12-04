@@ -1,19 +1,17 @@
 use crate::ui::pages::connect::ConnectMenu;
-use crate::ui::pages::menu::{Action, get_action, IMenu, MenuTag, MenuWidget};
+use crate::ui::pages::menu::{get_action, Action, IMenu, MenuTag, MenuWidget};
 use crate::ui::pages::start::StartBattleMenu;
 use crate::ui::screen::Screen;
 
 #[derive(Clone)]
 pub struct Menu {}
 
-
-
 impl IMenu for Menu {
     fn choose(&self, screen: &mut Screen) {
         match get_action(screen) {
-            Action::StartInput => {self.get_players_menu(screen)}
+            Action::StartInput => self.get_players_menu(screen),
             Action::StartBattle(_) => {}
-            Action::ConnectToBattle => {self.get_waiting_battles_menu(screen)}
+            Action::ConnectToBattle => self.get_waiting_battles_menu(screen),
             Action::ChooseToConnect(_) => {}
         }
     }
@@ -24,7 +22,6 @@ impl IMenu for Menu {
 }
 
 impl Menu {
-
     fn get_battles_menu(&self, _screen: &Screen) -> ConnectMenu {
         panic!()
         // let mut choices = vec![];
