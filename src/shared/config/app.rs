@@ -2,12 +2,12 @@ use std::fs::File;
 use std::io::Read;
 use toml::Table;
 
-struct Config {
+pub struct Config {
     pub world_url: String,
     pub battlefield_url: String,
 }
 
-fn read_config(file_path: String) -> Config {
+pub fn read_config(file_path: String) -> Config {
     let mut opened =
         File::open(file_path.clone()).expect(format!("{} doesnt exists", file_path).as_str());
     let mut config_buffer = [0u8; 4096];
@@ -25,7 +25,7 @@ fn read_config(file_path: String) -> Config {
 
 #[cfg(test)]
 mod configurator {
-    use crate::application::configuration::read_config;
+    use crate::application::app::read_config;
 
     #[test]
     fn test_config() {

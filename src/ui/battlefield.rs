@@ -1,5 +1,5 @@
 use crate::domain::types::BattleId;
-use crate::models::{BattleEvent, Player, Suggestion};
+use crate::domain::models::{BattleEvent, Player, Suggestion};
 use crate::ui::moves::moved;
 use crate::ui::players::player_state;
 use crate::ui::results::acted;
@@ -12,6 +12,7 @@ use ratatui::text::{Line, Span};
 use ratatui::widgets;
 use ratatui::widgets::{Block, BorderType, Borders, List, ListItem, ListState, Paragraph, Widget};
 use serde::Deserialize;
+use crate::entities::api::models::Player;
 
 impl BattleField {
     fn render_player(player: &Player, area: Rect, buf: &mut Buffer) {

@@ -1,2 +1,2 @@
-mod configuration;
+mod app;
 pub mod start_battle;

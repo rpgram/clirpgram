@@ -1,4 +1,4 @@
-use crate::models::Suggestion;
+use crate::domain::models::Suggestion;
 
 fn button(back_button_key: u8) -> String {
     match back_button_key {
