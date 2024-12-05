@@ -1,16 +1,13 @@
 use std::sync::mpsc::Sender;
-use std::sync::{Arc, Mutex};
 use std::time::Duration;
 use ratatui::crossterm::event;
 use ratatui::crossterm::event::{Event, KeyCode, KeyEventKind};
 use crate::entities::models::menu::KeyToUI;
-use crate::pages::interface::IMenu;
 use crate::shared::api::threads::worker::APIQuery;
 use crate::shared::config::clicks::KeyConfig;
 use crate::shared::config::consts::CLICK_REACTION_MS;
-use crate::widgets::controller::UIController;
 
-pub fn take_keys(sender: Sender<APIQuery>, ui_sender: Sender<KeyToUI>, key_config: KeyConfig) {
+pub fn take_keys(sender: Sender<APIQuery>, ui_sender: Sender<KeyToUI>, key_config: KeyConfig, exit_sender: Sender<bool>) {
     loop {
         if let Ok(ok) = event::poll(Duration::from_millis(CLICK_REACTION_MS)) {
             if ok == false {
@@ -31,7 +28,10 @@ pub fn take_keys(sender: Sender<APIQuery>, ui_sender: Sender<KeyToUI>, key_confi
                     } else if key.code == KeyCode::Char(key_config.key_d) {
                         sender.send(APIQuery::BattleClick('d')).unwrap()
                     } else if key.code == KeyCode::Char(key_config.key_q) {
-                        todo!()
+                        sender.send(APIQuery::Shutdown).unwrap();
+                        ui_sender.send(KeyToUI::Shutdown).unwrap();
+                        exit_sender.send(true).unwrap();
+                        return;
                     } else if key.code == KeyCode::Down {
                         ui_sender.send(KeyToUI::Down).unwrap()
                     } else if key.code == KeyCode::Up {

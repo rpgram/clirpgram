@@ -1,5 +1,3 @@
-use crate::api_adapter::client::APIClient;
-use crate::domain::types::PlayerId;
 use crate::ui::pages::main::Menu;
 use crate::pages::interface::IMenu;
 use crate::ui::pages::menu::{scroll_down, scroll_up, IMenuWidget, MenuWidget};
@@ -8,6 +6,8 @@ use ratatui::crossterm::event::{Event, KeyCode, KeyEvent, KeyEventKind};
 use ratatui::DefaultTerminal;
 use reqwest::blocking::Client;
 use std::time::Duration;
+use crate::entities::types::PlayerId;
+use crate::shared::api::client::APIClient;
 
 pub struct Screen<'a> {
     pub current_menu: Box<dyn IMenu>,

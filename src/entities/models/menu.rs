@@ -5,7 +5,7 @@ pub enum KeyToUI {
     Up,
     Down,
     Choose,
-
+    Shutdown
 }
 
 #[derive(Clone)]

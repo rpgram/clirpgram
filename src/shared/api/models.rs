@@ -1,5 +1,5 @@
-use crate::domain::types::{BattleId, PlayerId};
 use serde::Deserialize;
+use crate::entities::types::{BattleId, PlayerId};
 
 #[derive(Deserialize)]
 pub struct BattleStarted {

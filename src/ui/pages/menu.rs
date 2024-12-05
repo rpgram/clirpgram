@@ -1,4 +1,3 @@
-use crate::domain::types::{BattleId, PlayerId};
 use crate::ui::screen::Screen;
 use ratatui::buffer::Buffer;
 use ratatui::layout::Rect;
@@ -95,7 +94,7 @@ impl MenuWidget {
     pub fn start(screen: &mut Screen) -> Self {
         let players = screen.api_client.get_players();
         let mut choices = vec![];
-        for player in players {
+        for player in players.into_iter() {
             choices.push(MenuChoice {
                 action: Action::StartBattle(Some(player.player_id)),
                 title: player.username,
@@ -114,7 +113,7 @@ impl MenuWidget {
     pub fn connect(screen: &mut Screen) -> Self {
         let battles = screen.api_client.get_waiting_battles();
         let mut choices = vec![];
-        for battle in battles {
+        for battle in battles.into_iter() {
             choices.push(MenuChoice {
                 action: Action::ChooseToConnect(battle.battle_id),
                 title: format!("{} for {}", battle.player_id, battle.battle_id),

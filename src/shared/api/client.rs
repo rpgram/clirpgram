@@ -1,10 +1,8 @@
-use crate::api_adapter::models::{
-    BattleResult, BattleStarted, JSONPacket, PlayerDTO, WaitingBattle,
-};
-use crate::api_adapter::utils::parse_response;
-use crate::domain::types::{BattleId, PlayerId};
-use crate::ui::battlefield::BattleField;
 use reqwest::blocking::{Client};
+use crate::entities::types::{BattleId, PlayerId};
+use crate::shared::api::models::{BattleResult, BattleStarted, JSONPacket, PlayerDTO, WaitingBattle};
+use crate::shared::api::utils::parse_response;
+use crate::ui::battlefield::BattleField;
 
 pub struct APIClient<'a> {
     pub backend: &'a str,

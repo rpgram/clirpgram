@@ -1,7 +1,7 @@
-use crate::api_adapter::models::{HeroClass, PlayerSetupDTO};
-use crate::api_adapter::utils::{parse_setup_response};
-use crate::domain::types::PlayerId;
 use reqwest::blocking::Client;
+use crate::entities::types::PlayerId;
+use crate::shared::api::models::{HeroClass, PlayerSetupDTO};
+use crate::shared::api::utils::parse_setup_response;
 
 pub struct SetupClient<'a> {
     backend: &'a str,
@@ -52,7 +52,7 @@ impl SetupClient<'_> {
 
 #[cfg(test)]
 mod setup_gateway {
-    use crate::api_adapter::setup::SetupClient;
+    use crate::shared::api::setup::SetupClient;
 
     #[test]
     fn integration_test() {

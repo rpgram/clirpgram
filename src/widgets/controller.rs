@@ -1,5 +1,6 @@
 use std::sync::mpsc::Receiver;
 use ratatui::DefaultTerminal;
+use crate::entities::models::menu::KeyToUI;
 use crate::pages::interface::IMenu;
 use crate::ui::pages::menu::MenuWidget;
 
@@ -12,7 +13,7 @@ pub struct UIController {
 }
 
 impl UIController {
-    pub fn run (&mut self, rx:Receiver<>) {
+    pub fn view (&mut self) {
         self.terminal
             .draw(|frame| frame.render_widget(&mut self.current_widget, frame.area()))
             .unwrap();

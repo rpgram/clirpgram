@@ -1,5 +1,5 @@
-use crate::api_adapter::setup::SetupErrors;
 use reqwest::blocking::Response;
+use crate::shared::api::setup::SetupErrors;
 
 pub fn parse_response<G: for<'a> serde::Deserialize<'a>>(
     response: reqwest::Result<Response>,

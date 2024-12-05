@@ -11,9 +11,10 @@ pub enum APIQuery {
     GetHero(u8),
     StartBattle(PlayerId),
     BattleClick(char),
+    Shutdown
 }
 
-pub fn work(app_state: Arc<Mutex<AppState>>, rc: Receiver<APIQuery>, config: Config) {
+pub fn work(_app_state: Arc<Mutex<AppState>>, rc: Receiver<APIQuery>, config: Config) {
     let gateway = APICaller::new(config.world_url, config.battlefield_url);
     loop {
         match rc.recv().unwrap() {
@@ -22,6 +23,7 @@ pub fn work(app_state: Arc<Mutex<AppState>>, rc: Receiver<APIQuery>, config: Con
             APIQuery::GetHero(hero_id) => {}
             APIQuery::StartBattle(opponent_id) => {}
             APIQuery::BattleClick(key) => {}
+            APIQuery::Shutdown => {return;}
         }
     }
 }
