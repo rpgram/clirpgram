@@ -1,5 +1,7 @@
+use crate::entities::models::menu::{Action, MenuTag};
+use crate::pages::interface::IMenu;
 use crate::ui::pages::connect::ConnectMenu;
-use crate::ui::pages::menu::{get_action, Action, IMenu, MenuTag, MenuWidget};
+use crate::ui::pages::menu::{get_action, MenuWidget};
 use crate::ui::pages::start::StartBattleMenu;
 use crate::ui::screen::Screen;
 

@@ -1,7 +1,7 @@
 use crate::api_adapter::client::APIClient;
 use crate::domain::types::PlayerId;
 use crate::ui::pages::main::Menu;
-use crate::ui::pages::menu::IMenu;
+use crate::pages::interface::IMenu;
 use crate::ui::pages::menu::{scroll_down, scroll_up, IMenuWidget, MenuWidget};
 use ratatui::crossterm::event;
 use ratatui::crossterm::event::{Event, KeyCode, KeyEvent, KeyEventKind};

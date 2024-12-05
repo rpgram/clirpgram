@@ -4,7 +4,9 @@ use std::{thread, time};
 use crate::api_adapter::client::APIClient;
 use crate::application::start_battle::running_battle;
 use crate::domain::types::PlayerId;
-use crate::ui::pages::menu::{get_action, Action, IMenu, MenuTag};
+use crate::entities::models::menu::{Action, MenuTag};
+use crate::pages::interface::IMenu;
+use crate::ui::pages::menu::get_action;
 use crate::ui::screen::Screen;
 
 #[derive(Clone)]

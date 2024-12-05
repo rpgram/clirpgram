@@ -1,56 +1,12 @@
 use crate::domain::types::{BattleId, PlayerId};
-use crate::ui::pages::connect::ConnectMenu;
-use crate::ui::pages::main::Menu;
-use crate::ui::pages::start::StartBattleMenu;
 use crate::ui::screen::Screen;
-use dyn_clone::DynClone;
 use ratatui::buffer::Buffer;
 use ratatui::layout::Rect;
 use ratatui::style::Stylize;
 use ratatui::text::Line;
 use ratatui::widgets;
 use ratatui::widgets::{HighlightSpacing, List, ListItem, ListState, Widget};
-
-#[derive(Clone)]
-pub enum Action {
-    StartInput,
-    StartBattle(Option<PlayerId>),
-    ConnectToBattle,
-    ChooseToConnect(BattleId),
-}
-
-#[derive(Clone)]
-pub struct MenuChoice {
-    pub action: Action,
-    pub title: String,
-}
-
-pub enum MenuTag {
-    MainMenu,
-    ConnectMenu,
-    StartMenu,
-}
-
-pub trait IMenu: DynClone {
-    fn choose(&self, screen: &mut Screen);
-
-    fn self_type(&self) -> MenuTag;
-}
-
-impl Clone for Box<dyn IMenu> {
-    fn clone(&self) -> Self {
-        match self.self_type() {
-            MenuTag::MainMenu => Box::new(Menu {}),
-            MenuTag::ConnectMenu => Box::new(ConnectMenu {}),
-            MenuTag::StartMenu => Box::new(StartBattleMenu {}),
-        }
-    }
-
-    // fn clone_from(&mut self, source: &Self) {
-    //     todo!()
-    // }
-}
-
+use crate::entities::models::menu::{Action, MenuChoice};
 // pub enum Menus {
 //     Main(Menu),
 //     Start(StartBattleMenu),

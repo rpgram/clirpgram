@@ -1,7 +1,7 @@
 pub mod battlefield;
-mod menus;
+pub mod menus;
 mod moves;
-mod pages;
+pub mod pages;
 pub mod players;
 pub mod results;
 pub mod screen;

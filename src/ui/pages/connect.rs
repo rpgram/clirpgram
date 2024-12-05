@@ -1,7 +1,9 @@
 use crate::application::start_battle::running_battle;
-use crate::ui::pages::menu::{get_action, Action, IMenu, MenuTag};
+use crate::ui::pages::menu::get_action;
 use crate::ui::screen::Screen;
 use std::time::Duration;
+use crate::entities::models::menu::{Action, MenuTag};
+use crate::pages::interface::IMenu;
 
 #[derive(Clone)]
 pub struct ConnectMenu {}

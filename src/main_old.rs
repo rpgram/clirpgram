@@ -1,14 +1,8 @@
-use crate::ui::screen::Screen;
 use color_eyre::Result;
 use std::env;
 use std::time::Duration;
+use crate::ui::screen::Screen;
 
-mod api_adapter;
-mod application;
-mod domain;
-mod ui;
-mod entities;
-mod features;
 
 fn main_old() -> Result<()> {
     color_eyre::install()?;
